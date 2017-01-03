@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     table.text('exercise');
     table.integer('duration');
     table.integer('distance');
-    table.string('HR-zone');
+    table.string('HR_zone');
   })
 };
 
