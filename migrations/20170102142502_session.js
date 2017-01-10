@@ -2,7 +2,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('session', (table)=> {
     table.increments();
-    table.date('date');
+    table.dateTime('date');
     table.text('exercise');
     table.integer('duration');
     table.integer('distance');

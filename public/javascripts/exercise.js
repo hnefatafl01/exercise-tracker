@@ -37,18 +37,28 @@ function submitInput() {
       date: new Date(),
       exercise: $exercise.val(),
       duration: $duration.val(),
-      distance: $duration.val(),
+      distance: $distance.val(),
       HR_zone: function(){
         if ($listItem.hasClass('active')) {
           return $('.list-group .active').html();
         }
       }()
     }
-    $.ajax({
-		    type: 'POST',
-		    dataType: 'json',
-		    url: `${apiUrl}`,
-		    data: exerciseSession
-		})
+    // $.ajax({
+		//     type: 'POST',
+		//     dataType: 'json',
+		//     url: `${apiUrl}`,
+		//     data: exerciseSession
+		// })
+    $.post(apiUrl,exerciseSession, function(){
+      console.log(exerciseSession);
+      // var session = JSON.parse(exerciseSession);
+      // console.log(session);
+        $('#sessions').append(`<div class="well"><div>${exerciseSession.date}</div>
+                              <div>${exerciseSession.exercise}</div>
+                              <div>${exerciseSession.duration}minutes</div>
+                              <div>${exerciseSession.distance}meters</div>
+                              <div>${exerciseSession.HR_zone}</div></div>`)
+    })
   })
 }
