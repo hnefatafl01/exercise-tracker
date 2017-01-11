@@ -5,17 +5,26 @@ var knex = require('../db/knex');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-  res.send('session!')
+  Queries.getAll()
+  .then(function(result){
+    res.json(result)
+  })
 });
 
-router.post('/', function(req,res){
-  console.log(req.body);
+router.get('/:id', function(req, res) {
+  var id = req.params.id
+  Queries.getOne(id)
+  .then(function(result){
+    res.json(result)
+  })
+});
+
+router.post('/', function(req,res) {
   var exerciseSession = {
     exercise: req.body.exercise,
     duration: req.body.duration,
-    distance: req.body.distance,
+    distance: req.body.distance
   };
-
   Queries.create(exerciseSession)
   .then(function() {
     res.json({

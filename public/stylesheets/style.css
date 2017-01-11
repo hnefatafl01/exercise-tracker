@@ -9,4 +9,11 @@ a {
 
 .well {
   margin-left: 2em;
+  margin-right: 2em;
+}
+
+.sessions {
+  margin-left: 5vw;
+  margin-right: 5vw;
+  padding-right: 2em;
 }

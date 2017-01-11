@@ -44,21 +44,16 @@ function submitInput() {
         }
       }()
     }
-    // $.ajax({
-		//     type: 'POST',
-		//     dataType: 'json',
-		//     url: `${apiUrl}`,
-		//     data: exerciseSession
-		// })
+
     $.post(apiUrl,exerciseSession, function(){
-      console.log(exerciseSession);
-      // var session = JSON.parse(exerciseSession);
-      // console.log(session);
-        $('#sessions').append(`<div class="well"><div>${exerciseSession.date}</div>
-                              <div>${exerciseSession.exercise}</div>
-                              <div>${exerciseSession.duration}minutes</div>
-                              <div>${exerciseSession.distance}meters</div>
-                              <div>${exerciseSession.HR_zone}</div></div>`)
+      console.log(exerciseSession);//no id
+      console.log(exerciseSession.id);//undefined
+      $('#sessions').append(`<div class="well"><div>${exerciseSession.date}</div>
+                            <div>${exerciseSession.exercise}</div>
+                            <div>${exerciseSession.duration}minutes</div>
+                            <div>${exerciseSession.distance}meters</div>
+                            <div>${exerciseSession.HR_zone}</div></div>`)
+      window.location = `/single.html?=${exerciseSession.id}`;
     })
   })
 }
